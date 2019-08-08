@@ -1,46 +1,37 @@
 webix.ready(function () {
-    /* массивы:Проекты, Задачи, Пользователи*/
-    const ProjectStorage = [];
-    const TaskStorage = [];
-    const UserStorage = [];
-
     /* пример заполнения массивов*/
     {
         let a = new Projects('ABC');
-        FillingContainer(ProjectStorage, a);
+        projectModel.create(a);
 
-        let b = new Tasks('abc');
-        FillingContainer(TaskStorage, b);
+        let b = new Tasks('1', 'avc');
+        taskModel.create(b);
 
         let c = new Users(
             'Denis',
             'Selin',
-            'Andreevch',
+            'Andreevich',
             'deniskaselin@gmail.com',
-            89218983, 1);
-        FillingContainer(UserStorage, c);
+            89218983, '1');
+        userModel.create(c);
     }
 
-    /* заполнение блока проекта:Спикок проектов, Информация о выбранном проекте */
+    /* заполнение блока проекта:Список проектов, Информация о выбранном проекте */
     const ProjectBlock = {
-        cols: [ProjectContainer(ProjectStorage), ProjectView()]
+        cols: [ProjectContainer(projects), ProjectView()]
     };
 
     /* запонение блока задачи:Список задач проекта, Информация о выбранной задаче */
     const TaskBlock = {
-        cols: [TaskContainer(TaskStorage), TaskView()]
+        cols: [TaskContainer(tasks), TaskView()]
     };
 
-    /* заполнение блока пользователя:ФИО, Должность */
-    const UserBlock = {
-        rows: [{
-            template: ' #lastname# #firstname# #middlename#', data: UserStorage
-        },
-            {template: 'employee`s position'}]
-    };
+    /* заполнение блока пользователя:ФИО, Должность, элемент массива */
+    const UserBlock = UserView(users);
 
     webix.ui({
         rows: [
+
             //ProjectName, UserInform
             {
                 cols: [
@@ -56,7 +47,13 @@ webix.ready(function () {
             {
                 cols: [
                     {view: 'template', template: 'breadcrumbs',},//breadcrumbs
-                    {view: 'search', id: '', label: 'Поиск:', placeholder: 'search', labelAlign: 'center'/*,width:400*/}
+                    {
+                        view: 'search',
+                        id: 'search',
+                        label: 'Поиск:',
+                        placeholder: 'search',
+                        labelAlign: 'center'/*,width:400*/
+                    }
                 ]
             },
 
@@ -65,6 +62,18 @@ webix.ready(function () {
             //TaskContainer, TaskViewer
             TaskBlock,
         ]
+
+
     });
 
+
+    const item = $$('projectMenu').getMenuItem('createProjectSubMenu');
+
+    debugger
+
+    //test error
+    alert($$('menu'));
+    $$('Sub').attachEvent('onMenuItemClick', (id) => {
+        alert(id)
+    })
 });
