@@ -2,21 +2,19 @@ function TaskView() {
 
     return {
         rows: [
+
             {
-                cols: [{template: 'Информация о задаче'},
-                    {
-                        view: 'menu',
-                        id:'ds',
-                        data: [{
-                            value: 'Меню', submenu: [
-                                {value: 'Создать', id: 'createTaskSubMenu'},
-                                {value: 'Редактровать', id: 'editTaskSubMenu'},
-                                {value: 'Удалить', id: 'deleteTaskSubMenu'}]
-                        }],
 
-                        width: 60,
+                view: 'toolbar',
+                id: 'TaskMenu',
+                cols: [
+                    {view:'label',label:'Информация о задаче',align:'center'},
+                    {view: 'icon', icon: 'wxi-plus-circle', id: 'createTaskSubMenu'},
+                    {view: 'icon', icon: 'wxi-pencil', id: 'editTaskSubMenu'},
+                    {view: 'icon', icon: 'wxi-trash', id: 'deleteTaskSubMenu'}
+                ]
 
-                    }]
+
             },
             {
                 view: 'form',
@@ -26,7 +24,15 @@ function TaskView() {
                 },
                 scroll: true,
                 elements: [
-                    {view: 'text', label: 'name', value: 'dasdas', readonly: true},
+                    {view: 'text', label: 'Название:', name: 'name',labelWidth:120},
+                    {view: 'text', label: 'Трудозатраты:', name: 'worktime',labelWidth:120},
+                    {view: 'text', label: 'Состояние:', name: 'state',labelWidth:120},
+                    {view: 'text', label: 'Приоритет:', name: 'priority',labelWidth:120},
+                    {view: 'text', label: 'Выполняет:', name: 'employee',labelWidth:120},
+                    {view: 'text', label: 'Назначил:', name: 'author',labelWidth:120},
+                    {view: 'text', label: 'parenttask', name: 'parenttask',labelWidth:120},
+                    {view: 'text', label: 'Проект:', name: 'project',labelWidth:120},
+                    {view: 'text', label: 'Дата создания:', name: 'createdate',labelWidth:120}
 
                 ]
             }

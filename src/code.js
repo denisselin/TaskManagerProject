@@ -1,11 +1,35 @@
 webix.ready(function () {
     /* пример заполнения массивов*/
     {
-        let a = new Projects('ABC');
-        projectModel.create(a);
 
-        let b = new Tasks('1', 'avc');
+        let e = new Projects('CBA');
+        projectModel.create(e);
+
+
+        let b = new Tasks(
+            '1',
+            'avc',
+            4,
+            1,
+            1,
+            'Dadaev',
+            'Veselov',
+            'name parent task',
+            'name project',
+            12 / 12 / 2019);
         taskModel.create(b);
+        let de = new Tasks('2',
+            'vca',
+            4,
+            1,
+            1,
+            'Mamaev',
+            'Okov',
+            'name parent task',
+            'name project',
+            12 / 12 / 2019
+            );
+        taskModel.create(de);
 
         let c = new Users(
             'Denis',
@@ -41,6 +65,8 @@ webix.ready(function () {
                         type: 'header'
                     },
                     UserBlock
+
+
                 ]
             },
             //SelectedName, Search
@@ -56,7 +82,6 @@ webix.ready(function () {
                     }
                 ]
             },
-
             //ProjectContainer, ProjectViewer
             ProjectBlock,
             //TaskContainer, TaskViewer
@@ -66,14 +91,6 @@ webix.ready(function () {
 
     });
 
+    EventsActive();
 
-    const item = $$('projectMenu').getMenuItem('createProjectSubMenu');
-
-    debugger
-
-    //test error
-    alert($$('menu'));
-    $$('Sub').attachEvent('onMenuItemClick', (id) => {
-        alert(id)
-    })
 });

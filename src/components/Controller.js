@@ -12,39 +12,37 @@
 //         userModel.delete()
 //     });
 // }
-//
-// //SubMenu Event of project
-// {
-//     $$('createProjectSubMenu').attachEvent('omItemClick', () => {
-//         projectModel.create()
-//     });
-//
-//     $$('editProjectSubMenu').attachEvent('onItemClick', () => {
-//         projectModel.update()
-//     });
-//
-//     $$('deleteProjectSubMenu').attachEvent('onItemClick', () => {
-//         projectModel.delete()
-//     });
-// }
-//
-// //SubMenu Event of task
-// {
-//     $$('createTaskSubMenu').attachEvent('onItemClick', () => {
-//         taskModel.create()
-//     });
-//
-//     $$('editTaskSubMenu').attachEvent('onItemClick', () => {
-//         taskModel.update()
-//     });
-//
-//     $$('deleteTaskSubMenu').attachEvent('onItemClick', () => {
-//         taskModel.delete()
-//     })
-//
-// }
 
-// $$('projectList').attachEvent('onItemClick',(id)=>{alert(id)});
-// $$('taskList').attachEvent('onItemClick');
+function getEdition() {
+    const item = $$().getValues();
+    return
+
+}
+
+function EventsActive (){
+
+    $$('createProjectSubMenu').attachEvent('onItemClick',()=>{createProjectViewer()});
+
+    $$('editProjectSubMenu').attachEvent('onItemClick',()=>{alert('edit')});
+
+    $$('deleteProjectSubMenu').attachEvent('onItemClick',()=>{alert('delete')});
+
+    $$('createTaskSubMenu').attachEvent('onItemClick',()=>{createTaskViewer()});
+
+    $$('editTaskSubMenu').attachEvent('onItemClick',()=>{alert('edit')});
+
+    $$('deleteTaskSubMenu').attachEvent('onItemClick',()=>{alert('delete')});
 
 
+
+//get project to view
+$$('projectList').attachEvent('onItemClick', (id) => {
+    const item = $$('projectList').getItem(id);
+    $$('projectInfo').parse(item);
+});
+
+//get task to view
+$$('taskList').attachEvent('onItemClick', (id) => {
+    const item = $$('taskList').getItem(id);
+    $$('taskInfo').parse(item);
+});}

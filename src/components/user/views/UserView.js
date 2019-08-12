@@ -1,8 +1,9 @@
 function UserView(mass) {
     return {
-        rows: [{
-            template: ' #lastname# #firstname# #middlename#', data: mass
-        },
-            {template: 'employee`s position'}]
+        cols:[
+             {template: ' #lastname# #firstname# #middlename# employee`s position', data: mass},
+
+             {view:'icon', icon:'mdi mdi-account'}]
+
     }
 }
