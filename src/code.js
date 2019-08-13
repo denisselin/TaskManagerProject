@@ -4,6 +4,8 @@ webix.ready(function () {
 
         let e = new Projects('CBA');
         projectModel.create(e);
+        let a = new Projects('ABC');
+        projectModel.create(a);
 
 
         let b = new Tasks(

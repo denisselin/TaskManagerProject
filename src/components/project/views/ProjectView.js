@@ -24,7 +24,7 @@ function ProjectView() {
                     labelWidth: 100
                 },
                 elements: [
-                    {view: 'text', label: 'Название:', name: 'name', readonly: true, labelWidth: 120},
+                    {view: 'text', label: 'Название:', name: 'name',id:'name',  labelWidth: 120},
                     {view: 'text', label: 'Дата создания:', value: '12.12.18', readonly: true, labelWidth: 120}
                 ],
 

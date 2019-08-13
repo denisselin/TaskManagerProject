@@ -3,7 +3,7 @@ function createProjectViewer() {
     webix.ui({
 
         view: 'window',
-        id: 'createWindow',
+        id: 'createProjectWindow',
         move: true,
         // close: true,
         head: 'Создание проекта ',
@@ -20,19 +20,24 @@ function createProjectViewer() {
                     cols: [
                         {
                             view: 'button', value: 'Создать',
-                            // on: {
-                            //     'onItemClick': function () {
-                            //         let a = new Projects;
-                            //         a.name = $$('wroteName').getValue();
-                            //         projectModel.create(a);}
-                            // }
+                            on: {
+                                'onItemClick': function () {
+                                    let value = new Projects;
+                                    value.name = $$('wroteName').getValue();
+                                    projectModel.create(value);
+
+                                    $$('createProjectWindow').close();
+                                    alert('Проект создан');
+                                    $$('projectList').refresh();
+                                }
+                            }
                         },
 
                         {
                             view: 'button', value: 'Отмена',
                             on: {
                                 'onItemClick': function () {
-                                    $$('createWindow').close();
+                                    $$('createProjectWindow').close();
                                 }
                             }
                         }]
@@ -49,7 +54,7 @@ function createTaskViewer() {
     webix.ui({
 
         view: 'window',
-        id: 'createWindow',
+        id: 'createTaskWindow',
         move: true,
         head: 'Создание проекта ',
         width: 600,
@@ -59,24 +64,44 @@ function createTaskViewer() {
         body: {
             rows: [
 
-                {labelAlign: 'right', view: 'text', label: 'Название:', name: 'name'},
-                {labelAlign: 'right', view: 'text', label: 'Трудозатраты:', name: 'worktime'},
-                {labelAlign: 'right', view: 'text', label: 'Состояние:', name: 'state'},
-                {labelAlign: 'right', view: 'text', label: 'Приоритет:', name: 'priority'},
-                {labelAlign: 'right', view: 'text', label: 'Выполняет:', name: 'employee'},
-                {labelAlign: 'right', view: 'text', label: 'Назначил:', name: 'author'},
-                {labelAlign: 'right', view: 'text', label: 'parenttask', name: 'parenttask'},
-                {labelAlign: 'right', view: 'text', label: 'Проект:', name: 'project'},
-                {labelAlign: 'right', view: 'text', label: 'Дата создания:', name: 'createdate'},
+                {labelAlign: 'right', view: 'text', label: 'Название:',     name: 'name',       id:'name'},
+                {labelAlign: 'right', view: 'text', label: 'Трудозатраты:', name: 'worktime',   id:'worktime'},
+                {labelAlign: 'right', view: 'text', label: 'Состояние:', name: 'state',         id:'state'},
+                {labelAlign: 'right', view: 'text', label: 'Приоритет:', name: 'priority',      id:'priority'},
+                {labelAlign: 'right', view: 'text', label: 'Выполняет:', name: 'employee',      id:'employee'},
+                {labelAlign: 'right', view: 'text', label: 'Назначил:',  name: 'author',        id:'author'},
+                {labelAlign: 'right', view: 'text', label: 'parenttask', name: 'parenttask',    id:'parenttask'},
+                {labelAlign: 'right', view: 'text', label: 'Проект:',        name: 'project',   id:'project'},
+                {labelAlign: 'right', view: 'text', label: 'Дата создания:', name: 'createdate',id:'createdate'},
                 {
                     cols: [
-                        {view: 'button', value: 'Создать'},
+                        {view: 'button', value: 'Создать',
+                            on: {
+                                'onItemClick': function () {
+                                    const value = new Tasks;
+                                    value.name =$$('name').getValue();
+                                    value.state =$$('worktime').getValue();
+                                    value.priority = $$('state').getValue();
+                                    value.employee = $$('priority').getValue();
+                                    value.author = $$('employee').getValue();
+                                    value.parenttask = $$('author').getValue();
+                                    value.project = $$('parenttask').getValue();
+                                    value.worktime = $$('project').getValue();
+                                    value.createdate = $$('createdate').getValue();debugger;
+
+                                    taskModel.create(value);
+
+                                    $$('createTaskWindow').close();
+                                    alert('Задача добавлена');
+                                    $$('taskList').refresh();debugger
+                                }
+                            }},
 
                         {
                             view: 'button', value: 'Отмена',
                             on: {
                                 'onItemClick': function () {
-                                    $$('createWindow').close();
+                                    $$('createTaskWindow').close();
                                 }
                             }
                         }]

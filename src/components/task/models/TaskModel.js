@@ -14,12 +14,18 @@ const taskModel = {
     //изменяет элемент task
 
     update: (id, elem) => {
-        const item = tasks.find(task => task.id === id);
-        for (const key2 in item) {
-            if (item[key] !== elem[key]) {
-                item[key] = elem[key]
-            }
+        for (let item of tasks) {
+            if (item.id === id) {
 
+                debugger;
+                for (const key2 in item) {
+                    if (item[key] !== elem[key]) {
+                        item[key] = elem[key]
+                    }
+
+                }
+                break;
+            }
         }
 
     },
@@ -31,12 +37,12 @@ const taskModel = {
 
     //удаляет элемент task
     delete: (id) => {
-        const i = tasks.forEach(function (item, index) {
+        tasks.forEach(function (item, index) {
             if (item.id === id) {
-                return index;
+                tasks.splice(index, 1)
             }
         });
-        tasks.splice(i, 1)
+
 
     }
 };

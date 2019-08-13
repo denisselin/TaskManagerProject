@@ -13,13 +13,16 @@ const projectModel = {
 
     //изменение элемента project
     update: (id, elem) => {
-        const item = projects.find(project => project.id === id);
+        let item = projects.find(project => project.id === id);
+
+        debugger;
         for (const key2 in item) {
             if (item[key] !== elem[key]) {
                 item[key] = elem[key]
             }
 
         }
+
 
     },
 
@@ -30,12 +33,16 @@ const projectModel = {
 
     //удаление элемента project
     delete: (id) => {
-        const i = projects.forEach(function (item, index) {
+        projects.forEach(function (item, index) {
+
             if (item.id === id) {
-                return index
+                projects.splice(index, 1);
+
             }
         });
-        projects.splice(i, 1)
 
-    }
+
+    },
+
+
 };
