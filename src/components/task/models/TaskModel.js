@@ -14,20 +14,13 @@ const taskModel = {
     //изменяет элемент task
 
     update: (id, elem) => {
-        for (let item of tasks) {
-            if (item.id === id) {
-
-                debugger;
-                for (const key2 in item) {
-                    if (item[key] !== elem[key]) {
-                        item[key] = elem[key]
-                    }
-
-                }
-                break;
+        let item = tasks.find(task =>task.id === id);
+debugger
+        for (const key in item) {
+            if (item[key] !== elem[key]) {
+                item[key] = elem[key]
             }
-        }
-
+        }debugger
     },
 
     //создает элемент task

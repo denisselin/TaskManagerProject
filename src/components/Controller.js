@@ -14,35 +14,32 @@
 // }
 
 
-
 function EventsActive() {
 
     //project toolbar
     {
         $$('createProjectSubMenu').attachEvent('onItemClick', () => {
             createProjectViewer();
-
-
         });
 
         $$('editProjectSubMenu').attachEvent('onItemClick', () => {
             const id = $$('projectList').getSelectedId();
-            debugger;
-            let elem = JSON.stringify($$('projectInfo').getValues(), null, 2);
-            debugger;
-            projectModel.update(id, elem);
-            debugger;
-            $$('projectList').refresh();
-
+            if (id !== '') {
+                let elem = $$('projectInfo').getValues();
+                projectModel.update(id, elem);
+                alert('Проект изменен');
+                $$('projectList').refresh();
+            }
         });
 
         $$('deleteProjectSubMenu').attachEvent('onItemClick', () => {
             const id = $$('projectList').getSelectedId();
-            debugger;
-            projectModel.delete(id);
-            debugger;
-            $$('projectList').refresh();
-            alert('Проект удален');
+            if (id !== '') {
+                projectModel.delete(id);
+                alert('Проект удален');
+            const bankTable = $$ ('projectList');
+            bankTable.define("data",projectModel.getAll());
+            bankTable.refresh();}
         });
     }
 
@@ -50,30 +47,29 @@ function EventsActive() {
     {
         $$('createTaskSubMenu').attachEvent('onItemClick', () => {
             createTaskViewer();
-
         });
 
         $$('editTaskSubMenu').attachEvent('onItemClick', () => {
             const id = $$('taskList').getSelectedId();
-            debugger;
-            let elem = new Tasks;
-                elem = JSON.stringify($$('taskInfo').getValues(), null, 2);
-            debugger;
-            taskModel.update(id, elem);
-            debugger;
-            $$('taskList').refresh();
+            if (id !== '') {
+                let elem = $$('taskInfo').getValues();
+                taskModel.update(id, elem);
+                alert('Задача изменена');
+                $$('taskList').refresh();
+            }
         });
 
         $$('deleteTaskSubMenu').attachEvent('onItemClick', () => {
             const id = $$('taskList').getSelectedId();
-            debugger;
-            taskModel.delete(id);
-            debugger;
-            $$('taskList').refresh();
-            alert('Задача удалена');
+            if (id !== '') {
+                taskModel.delete(id);
+                alert('Задача удалена');
+            }
+            const bankTable = $$ ('taskList');
+            bankTable.define("data",taskModel.getAll());
+            bankTable.refresh();
         });
     }
-
 
 //get project to view
     $$('projectList').attachEvent('onItemClick', (id) => {

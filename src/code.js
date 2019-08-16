@@ -2,35 +2,38 @@ webix.ready(function () {
     /* пример заполнения массивов*/
     {
 
-        let e = new Projects('CBA');
+        let e = {id: '1', name: 'dadad'};
         projectModel.create(e);
-        let a = new Projects('ABC');
-        projectModel.create(a);
+        let r = {id: '2', name: '1231@QRWQe'};
+        projectModel.create(r);
 
 
-        let b = new Tasks(
-            '1',
-            'avc',
-            4,
-            1,
-            1,
-            'Dadaev',
-            'Veselov',
-            'name parent task',
-            'name project',
-            12 / 12 / 2019);
+        let b = {
+            id : '1',
+            name : 'ATas',
+            state : 'doing',
+            priority : '1',
+            employee : 'Dadaev',
+            author : 'Vlasolov',
+            parenttask : '',
+            project : 'ABC',
+            worktime : '120',
+            createdate : '12/12/19'
+        };
+
         taskModel.create(b);
-        let de = new Tasks('2',
-            'vca',
-            4,
-            1,
-            1,
-            'Mamaev',
-            'Okov',
-            'name parent task',
-            'name project',
-            12 / 12 / 2019
-            );
+        let de = {
+            id : '2',
+            name : 'BAas',
+            state : 'doing',
+            priority : '2',
+            employee : 'Rogov',
+            author : 'Veselov',
+            parenttask : '',
+            project : 'ABC',
+            worktime : '8',
+            createdate : '10/12/19'
+        };
         taskModel.create(de);
 
         let c = new Users(
@@ -91,7 +94,7 @@ webix.ready(function () {
         ]
 
 
-    });
+    }).show();
 
     EventsActive();
 

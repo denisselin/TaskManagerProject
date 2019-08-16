@@ -13,17 +13,13 @@ const projectModel = {
 
     //изменение элемента project
     update: (id, elem) => {
-        let item = projects.find(project => project.id === id);
+        let item = projects.find(project =>project.id === id);
 
-        debugger;
-        for (const key2 in item) {
+        for (const key in item) {
             if (item[key] !== elem[key]) {
                 item[key] = elem[key]
             }
-
         }
-
-
     },
 
     // создание элемента project
